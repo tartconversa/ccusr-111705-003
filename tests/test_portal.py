@@ -10,6 +10,6 @@ class PortalInteractionTest(BrowserBaselineTest):
             try:
                 page = browser.new_page()
                 page.goto(self.origin + "detail?id=" + DATA["items"][0]["id"], wait_until="domcontentloaded")
-                page.locator('#address').fill('桐花苑 1 栋');page.locator('#address-check').click();self.assertEqual(page.locator('#address-result').inner_text(),'桐花苑 1 栋：服务区')
+                page.locator('#address').fill('桐花苑 1 栋');page.locator('#address-check').click();page.locator('#preview').click();self.assertEqual(page.locator('#provider').inner_text(),'城区维修队');page.locator('#address').fill('桐花苑 2 栋');page.locator('#address-check').click();page.locator('#preview').click();self.assertEqual(page.locator('#provider').inner_text(),'东区维修队');self.assertEqual(page.locator('#result').inner_text(),'暂不可确认')
             finally:
                 browser.close()

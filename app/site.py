@@ -20,7 +20,7 @@ def render_detail(item):
 const choice=document.getElementById('choice'); const panel=document.getElementById('panel'); const result=document.getElementById('result');
 choice.addEventListener('change',()=>{{panel.textContent='';result.textContent='';}});
 document.getElementById('details').addEventListener('click',()=>{{panel.textContent='读取中';setTimeout(()=>{{panel.textContent=choice.value+'：'+{json.dumps(item['detail'], ensure_ascii=False)};}},45);}});
-document.getElementById('preview').addEventListener('click',()=>{{result.textContent='核对中';setTimeout(()=>{{result.textContent=choice.value+'：'+{json.dumps(item['preview'], ensure_ascii=False)};}},45);}});
+if(!document.getElementById('preview').onclick) document.getElementById('preview').addEventListener('click',()=>{{result.textContent='核对中';setTimeout(()=>{{result.textContent=choice.value+'：'+{json.dumps(item['preview'], ensure_ascii=False)};}},45);}});
 </script></html>"""
 
 class Handler(BaseHTTPRequestHandler):
